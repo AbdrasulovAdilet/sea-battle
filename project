@@ -1,1 +1,9 @@
-list = []
+import random
+import os
+
+GRID_SIZE = 7
+SHIP_SIZES = [3, 2, 2, 1, 1, 1, 1]
+EMPTY = "."
+MISS = "O"
+HIT = "X"
+SUNK = "S"
