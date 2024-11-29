@@ -105,3 +105,9 @@ while True:
     replay = input("\nPlay again? (y/n): ").strip().lower()
     if replay != "y":
         break
+
+sorted_scores = sorted(scores.items(), key=lambda x: x[1])
+print("\nLeaderboard:")
+for name, score in sorted_scores:
+    print(f"{name}: {score} shots")
+print("Thanks for playing!")
