@@ -89,3 +89,19 @@ while True:
                         for nx in range(GRID_SIZE):
                             if ships_grid[ny][nx] == ship_size:
                                 grid[ny][nx] = SUNK
+       else:
+            grid[y][x] = MISS
+            print("Miss.")
+
+        input("Press Enter to continue...")
+
+        if ship_cells == 0:
+            won = True
+
+    os.system('cls' if os.name == 'nt' else 'clear')
+    print(f"Congratulations, {player_name}! You won in {shots} shots.")
+    scores[player_name] = shots
+
+    replay = input("\nPlay again? (y/n): ").strip().lower()
+    if replay != "y":
+        break
