@@ -40,3 +40,19 @@ while True:
                     nx, ny = (x + i, y) if direction == "H" else (x, y + i)
                     ships_grid[ny][nx] = str(size)
                 placed = True
+
+    won = False
+    while not won:
+        os.system('cls' if os.name == 'nt' else 'clear')
+        print(f"{player_name}'s Game")
+        print("  " + " ".join(chr(65 + i) for i in range(GRID_SIZE)))
+        for i, row in enumerate(grid):
+            print(f"{i + 1} " + " ".join(row))
+
+        shot_input = input("\nEnter your shot (e.g., B3): ").strip().upper()
+        try:
+            x, y = ord(shot_input[0]) - 65, int(shot_input[1:]) - 1
+        except (ValueError, IndexError):
+            print("Invalid input. Try again.")
+            input("Press Enter to continue...")
+            continue
