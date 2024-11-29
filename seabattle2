@@ -73,3 +73,19 @@ while True:
             grid[y][x] = HIT
             print("Hit!")
             ship_cells -= 1
+
+            if ship_size == "1":
+                print("You sunk a ship!")
+                grid[y][x] = SUNK
+            else:
+                sunk = True
+                for ny in range(GRID_SIZE):
+                    for nx in range(GRID_SIZE):
+                        if ships_grid[ny][nx] == ship_size and grid[ny][nx] != HIT:
+                            sunk = False
+                if sunk:
+                    print("You sunk a ship!")
+                    for ny in range(GRID_SIZE):
+                        for nx in range(GRID_SIZE):
+                            if ships_grid[ny][nx] == ship_size:
+                                grid[ny][nx] = SUNK
