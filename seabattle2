@@ -10,3 +10,33 @@ SUNK = "☠"
 
 scores = {}
 
+while True:
+    os.system('cls' if os.name == 'nt' else 'clear')
+    print("Welcome to Battleship!")
+    player_name = input("Enter your name: ").strip()
+
+    shots = 0
+    grid = [[EMPTY for _ in range(GRID_SIZE)] for _ in range(GRID_SIZE)]
+    ships_grid = [[EMPTY for _ in range(GRID_SIZE)] for _ in range(GRID_SIZE)]
+    ship_cells = 0
+
+    for size in SHIP_SIZES:
+        ship_cells += size
+        placed = False
+        while not placed:
+            x, y = random.randint(0, GRID_SIZE - 1), random.randint(0, GRID_SIZE - 1)
+            direction = random.choice(["H", "V"])
+            valid = True
+            for i in range(size):
+                nx, ny = (x + i, y) if direction == "H" else (x, y + i)
+                if nx < 0 or nx >= GRID_SIZE or ny < 0 or ny >= GRID_SIZE or ships_grid[ny][nx] != EMPTY:
+                    valid = False
+                for dx, dy in [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]:
+                    if 0 <= nx + dx < GRID_SIZE and 0 <= ny + dy < GRID_SIZE:
+                        if ships_grid[ny + dy][nx + dx] != EMPTY:
+                            valid = False
+            if valid:
+                for i in range(size):
+                    nx, ny = (x + i, y) if direction == "H" else (x, y + i)
+                    ships_grid[ny][nx] = str(size)
+                placed = True
