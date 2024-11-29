@@ -89,7 +89,7 @@ while True:
                         for nx in range(GRID_SIZE):
                             if ships_grid[ny][nx] == ship_size:
                                 grid[ny][nx] = SUNK
-       else:
+        else:
             grid[y][x] = MISS
             print("Miss.")
 
