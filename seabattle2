@@ -11,7 +11,7 @@ SUNK = "☠"
 scores = {}
 
 while True:
-    os.system('cls' if os.name == 'nt' else 'clear')
+    os.system('cls')
     print("Welcome to Battleship!")
     player_name = input("Enter your name: ").strip()
 
@@ -43,7 +43,7 @@ while True:
 
     won = False
     while not won:
-        os.system('cls' if os.name == 'nt' else 'clear')
+        os.system('cls')
         print(f"{player_name}'s Game")
         print("  " + " ".join(chr(65 + i) for i in range(GRID_SIZE)))
         for i, row in enumerate(grid):
@@ -98,7 +98,7 @@ while True:
         if ship_cells == 0:
             won = True
 
-    os.system('cls' if os.name == 'nt' else 'clear')
+    os.system('cls')
     print(f"Congratulations, {player_name}! You won in {shots} shots.")
     scores[player_name] = shots
 
